@@ -5,38 +5,41 @@ using UnityEngine;
 public class helloworld : MonoBehaviour
 {
     public int bulat;
-    public float desimal;
+    public float pecahan;
     public char karakter;
-    public string text;
-    public enum vote{makan, minum}
-    public vote comment;
+    public string kata;
+    public bool bolean;
+    public enum pilihan{makan, minum}
+    public pilihan pilih;
+    string hasil;
     public Vector2 kordinat2d;
     public Vector3 kordinat3d;
-    string mytext;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(pilih==pilihan.makan){
+            hasil="anda memilih makan";
+        }else
+        {
+            hasil="anda memilih minum";
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(comment==vote.makan){
-            mytext="anda memilih makan";
-        }else{
-            mytext="anda memilih minum";
-        }
+        
     }
     void OnGUI() {
-        GUILayout.BeginArea(new Rect(10,10,2000,200));
+        GUILayout.BeginArea(new Rect(10,10,1000,200));
         GUILayout.Label("ini adalah tipe data integer ="+bulat.ToString());
-        GUILayout.Label("ini adalah tipe data float ="+desimal.ToString());
-        GUILayout.Label("ini adalah tipe data char ="+karakter.ToString());
-        GUILayout.Label("ini adalah tipe data string ="+text.ToString());
-        GUILayout.Label("ini kordinat 2d ="+kordinat2d.ToString());
-        GUILayout.Label("ini kordinat 3d ="+kordinat3d.ToString());
-        GUILayout.Label("anda memilih ="+mytext.ToString());
+        GUILayout.Label("ini adalah tipe data float ="+pecahan.ToString());
+        GUILayout.Label("ini adalah tipe data character ="+karakter.ToString());
+        GUILayout.Label("ini adalah tipe data string ="+kata.ToString());
+        GUILayout.Label("ini dalah tipe data boolean ="+bolean.ToString());
+        GUILayout.Label("ini adalah enumerasi ="+hasil.ToString());
+        GUILayout.Label("ini adalah Vector2 ="+kordinat2d.ToString());
+        GUILayout.Label("ini adalah Vector3 ="+kordinat3d.ToString());
         GUILayout.EndArea();
     }
 }
