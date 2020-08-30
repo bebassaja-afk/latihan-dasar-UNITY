@@ -1,0 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class kosong : MonoBehaviour
+{
+    public int[] nomer;
+    public string[] texts;
+    [System.Serializable]
+    public class Collection{
+        public int id;
+        public string anyvalue;
+    }
+    string mytext1, mytext2, mytext3;
+    public Collection[] collections;
+    // Start is called before the first frame update
+    void Start()
+    {
+        mytext1="";
+        for(int c=0;c<nomer.Length;c++){
+            mytext1=mytext1+nomer[c].ToString()+' ';
+        }
+        for(int c=0;c<texts.Length;c++){
+            mytext2=mytext2+texts[c]+' ';
+        }
+        for(int c=0;c<collections.Length;c++){
+            mytext3=mytext3+collections[c].id.ToString()+":"+collections[c].anyvalue+"";
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    /// <summary>
+    /// OnGUI is called for rendering and handling GUI events.
+    /// This function can be called multiple times per frame (one call per event).
+    /// </summary>
+    void OnGUI()
+    {
+        GUILayout.BeginArea(new Rect(10,10,2000,200));
+        GUILayout.Label("Array integer :"+mytext1);
+        GUILayout.Label("Array string :"+mytext2);
+        GUILayout.Label("Array object :"+mytext3);
+        GUILayout.EndArea();
+    }
+}
