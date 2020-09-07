@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyboardInput : MonoBehaviour
+public class InputKeyboard : MonoBehaviour
 {
-    string mytext1, mytext2;
-    public KeyCode mykey;
+    public KeyCode kode;
+    string i;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,29 +15,31 @@ public class KeyboardInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("a")){
-            mytext1="keypressed = a";
-        }
-        if(Input.GetKey(KeyCode.B)){
-            mytext1="keydown = b";
-        }
-        if(Input.GetKeyUp(mykey)){
-            mytext1="tombol pilihan user";
-        }
-        if(Input.anyKey){
-            mytext2="ada tombol yg dipencet terus menerus";
-        }else
+        if (Input.anyKey)
         {
-            mytext2="";
+            i = "anda menahan salah satu tombol";
         }
-        if(Input.GetAxis("Fire1")>0){
-            mytext1="KeyUp: Left ctrl/left mouse";
+        else
+        {
+            i = "";
+        }
+        if (Input.GetKey("a"))
+        {
+            gameObject.GetComponent<Renderer>().material.color = Color.red;
+        }
+        else if (Input.GetKeyUp("a"))
+        {
+            gameObject.GetComponent<Renderer>().material.color = Color.green;
+        }
+        else if (Input.GetKeyDown(kode))
+        {
+            gameObject.GetComponent<Renderer>().material.color = Color.blue;
         }
     }
-    void OnGUI() {
-        GUILayout.BeginArea(new Rect(10,10,400,200));
-        GUILayout.Label(mytext1);
-        GUILayout.Label(mytext2);
+    private void OnGUI()
+    {
+        GUILayout.BeginArea(new Rect(10, 10, 200, 200));
+        GUILayout.Label(i);
         GUILayout.EndArea();
     }
 }
